@@ -2,9 +2,9 @@ import React,{useEffect, useState} from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { View, Text, StyleSheet, TextInput, FlatList } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
-import EventsScreen from './EventsScreen';
 import RecommendationScreen from './RecommendationScreen';
 import SettingsScreen from './SettingsScreen';
+import AdminCRUD from './AdminCRUD';
 const Tab = createBottomTabNavigator();
 
 
@@ -20,8 +20,8 @@ const TabNavigator = () => {
       tabBarIcon: ({ focused, color, size }) => {
         let iconName;
 
-        if (route.name === 'Events') {
-          iconName = focused ? 'ios-calendar' : 'ios-calendar-outline';
+        if (route.name === 'HOME') {
+          iconName = focused ? 'ios-home' : 'ios-home-outline';
         } else if (route.name === 'Recommendation') {
           iconName = focused ? 'hardware-chip' : 'hardware-chip-outline';
         } else if (route.name === 'Settings') {
@@ -30,6 +30,7 @@ const TabNavigator = () => {
 
         return <Ionicons name={iconName} size={size} color={color} />;
       },
+      
       headerShown: false, 
     })}
     tabBarOptions={{
@@ -37,14 +38,15 @@ const TabNavigator = () => {
       inactiveTintColor: 'gray', // Set the inactive icon color
     }}
     >
-      <Tab.Screen name="Events" component={EventsScreen} />
+      <Tab.Screen name="HOME" component={AdminCRUD} />
       <Tab.Screen name="Recommendation" component={RecommendationScreen} />
       <Tab.Screen name="Settings" component={SettingsScreen} />
+      
     </Tab.Navigator>
   );
 };
 
-export const HomeScreen = () => {
+export const AdminHome = () => {
   return <TabNavigator />;
 };
 
